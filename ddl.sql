@@ -11,7 +11,6 @@ CREATE DATABASE controle_remedios
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 	
-	
 CREATE TABLE Medico (
 	CPF VARCHAR(11) NOT NULL,
 	nome VARCHAR(255) NOT NULL,
@@ -85,4 +84,25 @@ CREATE TABLE Atualiza_Quantidade (
 	CONSTRAINT atualizacao_qtd primary key (nome_remedio, laboratorio_remedio) 
 );
 
-	
+CREATE TABLE Ministra(
+	data_hora TIMESTAMP NOT NULL,
+	nome_remedio VARCHAR(255) NOT NULL,
+	laboratorio_remedio VARCHAR(255) NOT NULL,
+	CPF_paciente VARCHAR(11) NOT NULL,
+	CPF_medico VARCHAR(11) NOT NULL,
+	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
+	FOREIGN KEY (CPF_medico) REFERENCES Medico(CPF),
+	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF),
+	CONSTRAINT ministrar primary key (data_hora, nome_remedio, laboratorio_remedio, CPF_paciente, CPF_medico) 
+);
+
+--DROP TABLE Medico;
+--DROP TABLE Enfermeiro;
+--DROP TABLE Remedios;
+--DROP TABLE Remedios_Composicao;
+--DROP TABLE Paciente;
+--DROP TABLE Paciente_Caso;
+--DROP TABLE Paciente_Alergia;
+--DROP TABLE Atualiza;
+--DROP TABLE Atualiza_Quantidade;
+--DROP TABLE Ministra;	
