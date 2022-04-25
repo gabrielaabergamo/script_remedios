@@ -11,24 +11,39 @@ CREATE DATABASE controle_remedios
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 	
+-- CRIAÇÃO DOS DOMINOS
+CREATE DOMAIN PHONE as 
+	VARCHAR(11) CHECK 
+		(VALUE ~ '^\d{10}$' OR VALUE ~ '^\d{11}$');
+		
+CREATE DOMAIN VARCPF as
+	CHAR(11) CHECK
+		(VALUE ~'^\d{11}$');
+
+CREATE DOMAIN VARNAME as
+	VARCHAR(255) CHECK
+		(LENGTH(VALUE) > 2);
+
+--CRIAÇÃO DAS TABELAS
+		 
 CREATE TABLE Medico (
-	CPF VARCHAR(11) NOT NULL,
-	nome VARCHAR(255) NOT NULL,
+	CPF VARCPF NOT NULL,
+	nome VARNAME NOT NULL,
 	data_de_nascimento DATE NOT NULL,
-	CRM INT NOT NULL,
+	CRM INT CHECK (CRM > 0) NOT NULL,
 	CONSTRAINT CPF_medico primary key(CPF)
 );
 
 CREATE TABLE Enfermeiro (
-	CPF VARCHAR(11) NOT NULL,
-	nome VARCHAR(255) NOT NULL,
+	CPF VARCPF NOT NULL,
+	nome VARNAME NOT NULL,
 	data_de_nascimento DATE NOT NULL,
-	COREM INT NOT NULL,
+	COREM INT CHECK (COREM > 0) NOT NULL,
 	CONSTRAINT CPF_enfermeiro primary key(CPF)
 );
 
 CREATE TABLE Remedios (
-	nome VARCHAR(255) NOT NULL,
+	nome VARNAME NOT NULL,
 	laboratorio VARCHAR(255) NOT NULL,
 	doses_disponiveis SMALLINT	NOT NULL, --criar domain
 	uso_destinado VARCHAR(255) NOT NULL,
@@ -37,48 +52,48 @@ CREATE TABLE Remedios (
 
 CREATE TABLE Remedios_Composicao(
 	composicao VARCHAR(255) NOT NULL,
-	nome_remedio VARCHAR(255) NOT NULL,
+	nome_remedio VARNAME NOT NULL,
 	laboratorio_remedio VARCHAR(255) NOT NULL,
 	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
 	CONSTRAINT composto_isolado primary key (composicao, nome_remedio, laboratorio_remedio) 
 );
 
 CREATE TABLE Paciente (
-	CPF VARCHAR(11) NOT NULL,
-	nome VARCHAR(255) NOT NULL,
+	CPF VARCPF NOT NULL,
+	nome  VARNAME NOT NULL,
 	data_de_nascimento DATE NOT NULL,
 	data_de_entrada DATE NOT NULL,
-	contato_emergencia VARCHAR(11) NOT NULL,
+	contato_emergencia PHONE NOT NULL,
 	CONSTRAINT CPF_paciente primary key(CPF)
 );
 
 CREATE TABLE Paciente_Caso(
 	caso VARCHAR(255) NOT NULL,
-	CPF_paciente VARCHAR(11) NOT NULL,
+	CPF_paciente VARCPF NOT NULL,
 	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF),
 	CONSTRAINT caso_isolado primary key(caso, CPF_paciente)
 );
 
 CREATE TABLE Paciente_Alergia(
 	alergia VARCHAR(255) NOT NULL,
-	CPF_paciente VARCHAR(11) NOT NULL,
+	CPF_paciente VARCPF NOT NULL,
 	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF),
 	CONSTRAINT alergia_isolado primary key(alergia, CPF_paciente)
 );
 
 CREATE TABLE Atualiza (
 	data_hora TIMESTAMP NOT NULL,
-	nome_remedio VARCHAR(255) NOT NULL,
+	nome_remedio VARNAME NOT NULL,
 	laboratorio_remedio VARCHAR(255) NOT NULL,
-	CPF_enfermeiro VARCHAR(11) NOT NULL,
+	CPF_enfermeiro VARCPF NOT NULL,
 	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
 	FOREIGN KEY (CPF_enfermeiro) REFERENCES Enfermeiro(CPF),
 	CONSTRAINT atualizacao primary key (data_hora, nome_remedio, laboratorio_remedio, CPF_enfermeiro) 
 );
 
 CREATE TABLE Atualiza_Quantidade (
-	quantidade INT NOT NULL,
-	nome_remedio VARCHAR(255) NOT NULL,
+	quantidade INT CHECK (quantidade > 0) NOT NULL,
+	nome_remedio VARNAME NOT NULL,
 	laboratorio_remedio VARCHAR(255) NOT NULL,
 	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
 	CONSTRAINT atualizacao_qtd primary key (nome_remedio, laboratorio_remedio) 
@@ -86,10 +101,10 @@ CREATE TABLE Atualiza_Quantidade (
 
 CREATE TABLE Ministra(
 	data_hora TIMESTAMP NOT NULL,
-	nome_remedio VARCHAR(255) NOT NULL,
+	nome_remedio VARNAME NOT NULL,
 	laboratorio_remedio VARCHAR(255) NOT NULL,
-	CPF_paciente VARCHAR(11) NOT NULL,
-	CPF_medico VARCHAR(11) NOT NULL,
+	CPF_paciente  VARCPF NOT NULL,
+	CPF_medico VARCPF NOT NULL,
 	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
 	FOREIGN KEY (CPF_medico) REFERENCES Medico(CPF),
 	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF),
@@ -97,23 +112,23 @@ CREATE TABLE Ministra(
 );
 
 CREATE TABLE Ministra_Dosagem(
-	dosagem INT NOT NULL,
-	nome_remedio VARCHAR(255) NOT NULL,
+	dosagem INT CHECK (dosagem > 0) NOT NULL,
+	nome_remedio VARNAME NOT NULL,
 	laboratorio_remedio VARCHAR(255) NOT NULL,
-	CPF_paciente VARCHAR(11) NOT NULL,
+	CPF_paciente VARCPF NOT NULL,
 	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
 	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF),
 	CONSTRAINT ministrar_dose primary key (nome_remedio, laboratorio_remedio, CPF_paciente) 
 );
 
---DROP TABLE Medico;
---DROP TABLE Enfermeiro;
---DROP TABLE Remedios;
---DROP TABLE Remedios_Composicao;
---DROP TABLE Paciente;
---DROP TABLE Paciente_Caso;
---DROP TABLE Paciente_Alergia;
---DROP TABLE Atualiza;
---DROP TABLE Atualiza_Quantidade;
---DROP TABLE Ministra;
---DROP TABLE Ministra_Dosagem;
+DROP TABLE Medico CASCADE;
+DROP TABLE Enfermeiro CASCADE;
+DROP TABLE Remedios CASCADE;
+DROP TABLE Remedios_Composicao CASCADE;
+DROP TABLE Paciente CASCADE;
+DROP TABLE Paciente_Caso CASCADE;
+DROP TABLE Paciente_Alergia CASCADE;
+DROP TABLE Atualiza CASCADE;
+DROP TABLE Atualiza_Quantidade CASCADE;
+DROP TABLE Ministra CASCADE;
+DROP TABLE Ministra_Dosagem CASCADE;
