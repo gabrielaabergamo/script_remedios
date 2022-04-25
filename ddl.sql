@@ -96,6 +96,16 @@ CREATE TABLE Ministra(
 	CONSTRAINT ministrar primary key (data_hora, nome_remedio, laboratorio_remedio, CPF_paciente, CPF_medico) 
 );
 
+CREATE TABLE Ministra_Dosagem(
+	dosagem INT NOT NULL,
+	nome_remedio VARCHAR(255) NOT NULL,
+	laboratorio_remedio VARCHAR(255) NOT NULL,
+	CPF_paciente VARCHAR(11) NOT NULL,
+	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
+	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF),
+	CONSTRAINT ministrar_dose primary key (nome_remedio, laboratorio_remedio, CPF_paciente) 
+);
+
 --DROP TABLE Medico;
 --DROP TABLE Enfermeiro;
 --DROP TABLE Remedios;
@@ -105,4 +115,5 @@ CREATE TABLE Ministra(
 --DROP TABLE Paciente_Alergia;
 --DROP TABLE Atualiza;
 --DROP TABLE Atualiza_Quantidade;
---DROP TABLE Ministra;	
+--DROP TABLE Ministra;
+--DROP TABLE Ministra_Dosagem;
