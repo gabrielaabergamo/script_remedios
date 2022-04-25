@@ -28,7 +28,6 @@ CREATE TABLE Remedios_Composicao(
 	nome_remedio VARCHAR(255) NOT NULL,
 	laboratorio_remedio VARCHAR(255) NOT NULL,
 	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
-	--FOREIGN KEY (laboratorio_remedio) REFERENCES Remedios(laboratorio),
 	CONSTRAINT composto_isolado primary key (composicao, nome_remedio, laboratorio_remedio) 
 );
 
@@ -53,6 +52,15 @@ CREATE TABLE Paciente_Alergia(
 	CPF_paciente VARCHAR(11) NOT NULL,
 	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF),
 	CONSTRAINT alergia_isolado primary key(alergia, CPF_paciente)
+);
+
+CREATE TABLE Atualiza (
+	data_hora DATETIME NOT NULL,
+	nome_remedio VARCHAR(255) NOT NULL,
+	laboratorio_remedio VARCHAR(255) NOT NULL,
+	CPF_enfermeiro VARCHAR(11) NOT NULL,
+	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
+	
 );
 
 DROP TABLE Medico
