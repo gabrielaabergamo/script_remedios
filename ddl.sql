@@ -1,4 +1,17 @@
+-- Database: controle_remedios
 
+DROP DATABASE IF EXISTS controle_remedios;
+
+CREATE DATABASE controle_remedios
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Portuguese_Brazil.1252'
+    LC_CTYPE = 'Portuguese_Brazil.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+	
+	
 CREATE TABLE Medico (
 	CPF VARCHAR(11) NOT NULL,
 	nome VARCHAR(255) NOT NULL,
@@ -55,18 +68,21 @@ CREATE TABLE Paciente_Alergia(
 );
 
 CREATE TABLE Atualiza (
-	data_hora DATETIME NOT NULL,
+	data_hora TIMESTAMP NOT NULL,
 	nome_remedio VARCHAR(255) NOT NULL,
 	laboratorio_remedio VARCHAR(255) NOT NULL,
 	CPF_enfermeiro VARCHAR(11) NOT NULL,
 	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
-	
+	FOREIGN KEY (CPF_enfermeiro) REFERENCES Enfermeiro(CPF),
+	CONSTRAINT atualizacao primary key (data_hora, nome_remedio, laboratorio_remedio, CPF_enfermeiro) 
 );
 
-DROP TABLE Medico
-DROP TABLE Enfermeiro
-DROP TABLE Remedios
-DROP TABLE Paciente
-DROP TABLE Paciente_Caso
-DROP TABLE Paciente_Alergia
-DROP TABLE Remedios_Composicao
+CREATE TABLE Atualiza_Quantidade (
+	quantidade INT NOT NULL,
+	nome_remedio VARCHAR(255) NOT NULL,
+	laboratorio_remedio VARCHAR(255) NOT NULL,
+	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
+	CONSTRAINT atualizacao_qtd primary key (nome_remedio, laboratorio_remedio) 
+);
+
+	
