@@ -23,19 +23,17 @@ SELECT nome, doses_disponiveis FROM remedios r
 	
 	
 --Consulta 4 - Quais remédios disponíveis que se encaixam com determinado caso do paciente?
-SELECT nome FROM Remedios r
+SELECT DISTINCT nome FROM Remedios r
 	JOIN Paciente_Caso pc 
 	ON r.uso_destinado = pc.caso
 	WHERE pc.caso = <caso_determinado>
-	GROUP BY nome;
 
 
 --Consulta 5 - Quais pacientes foram medicados no mesmo dia que entraram?
-SELECT nome, cpf FROM paciente p
+SELECT DISTINCT nome, cpf FROM paciente p
     JOIN ministra m
     ON m.data_hora::date = p.data_de_entrada
-	WHERE p.cpf = m.cpf_paciente
-    GROUP BY nome, cpf;
+	WHERE p.cpf = m.cpf_paciente;
 	
 	
 --Consulta 6 - Quais pacientes possuem alergia a um determinado elemento na composição de um remédio?

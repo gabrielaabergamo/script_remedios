@@ -10,7 +10,7 @@ CREATE DATABASE controle_remedios
     LC_CTYPE = 'Portuguese_Brazil.1252'
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
-	
+
 -- CRIAÇÃO DOS DOMINOS
 
 CREATE DOMAIN PHONE as 
@@ -25,6 +25,7 @@ CREATE DOMAIN VARNAME as
 	VARCHAR(255) CHECK
 		(LENGTH(VALUE) > 2);
 
+	
 --CRIAÇÃO DAS TABELAS
 		 
 CREATE TABLE Medico (
@@ -89,18 +90,11 @@ CREATE TABLE Atualiza (
 	nome_remedio VARNAME NOT NULL,
 	laboratorio_remedio VARCHAR(255) NOT NULL,
 	CPF_enfermeiro VARCPF NOT NULL,
+	quantidade INT CHECK (quantidade > 0) NOT NULL,
 	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
 	FOREIGN KEY (CPF_enfermeiro) REFERENCES Enfermeiro(CPF)
 		ON DELETE SET NULL,
 	CONSTRAINT atualizacao primary key (data_hora, nome_remedio, laboratorio_remedio, CPF_enfermeiro) 
-);
-
-CREATE TABLE Atualiza_Quantidade (
-	quantidade INT CHECK (quantidade > 0) NOT NULL,
-	nome_remedio VARNAME NOT NULL,
-	laboratorio_remedio VARCHAR(255) NOT NULL,
-	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
-	CONSTRAINT atualizacao_qtd primary key (nome_remedio, laboratorio_remedio) 
 );
 
 CREATE TABLE Ministra(
@@ -109,23 +103,13 @@ CREATE TABLE Ministra(
 	laboratorio_remedio VARCHAR(255) NOT NULL,
 	CPF_paciente  VARCPF NOT NULL,
 	CPF_medico VARCPF NOT NULL,
+	dosagem INT CHECK (dosagem > 0) NOT NULL,
 	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
 	FOREIGN KEY (CPF_medico) REFERENCES Medico(CPF)
 		ON DELETE SET NULL,
 	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF)
 		ON DELETE SET NULL,
 	CONSTRAINT ministrar primary key (data_hora, nome_remedio, laboratorio_remedio, CPF_paciente, CPF_medico) 
-);
-
-CREATE TABLE Ministra_Dosagem(
-	dosagem INT CHECK (dosagem > 0) NOT NULL,
-	nome_remedio VARNAME NOT NULL,
-	laboratorio_remedio VARCHAR(255) NOT NULL,
-	CPF_paciente VARCPF NOT NULL,
-	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
-	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF)
-		ON DELETE SET NULL,
-	CONSTRAINT ministrar_dose primary key (nome_remedio, laboratorio_remedio, CPF_paciente) 
 );
 
 --DROP TABLE Medico CASCADE;

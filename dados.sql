@@ -180,67 +180,37 @@ INSERT INTO Paciente_Alergia
 	
 --ATUALIZA--
 INSERT INTO Atualiza
-	VALUES ('2022-03-10 12:04:02', 'Tylenol', 'Genérico', '12795147874');
+	VALUES ('2022-03-10 12:04:02', 'Tylenol', 'Genérico', '12795147874', 12);
 	
 INSERT INTO Atualiza
-	VALUES ('2022-04-01 16:33:10', 'Losartana', 'EMS', '51723859834');
+	VALUES ('2022-04-01 16:33:10', 'Losartana', 'EMS', '51723859834', 9);
 	
 INSERT INTO Atualiza
-	VALUES ('2022-04-14 06:44:56', 'Scaflan', 'Genérico', '63585511830');
+	VALUES ('2022-04-14 06:44:56', 'Scaflan', 'Genérico', '63585511830', 14);
 	
---ATUALIZA_QUANTIDADE--
-INSERT INTO Atualiza_Quantidade
-	VALUES (12, 'Scaflan', 'Genérico');
-	
-INSERT INTO Atualiza_Quantidade
-	VALUES (9, 'Losartana', 'EMS');
-	
-INSERT INTO Atualiza_Quantidade
-	VALUES (14, 'Tylenol', 'Genérico');
+INSERT INTO Atualiza
+	VALUES ('2022-04-14 07:02:16', 'Scaflan', 'Genérico', '63585511830', 2);
 	
 --MINISTRA--
 INSERT INTO Ministra
-	VALUES ('2022-02-11 19:22:11', 'Losartana', 'EMS', '61631636804', '95620594807'); --lucas
+	VALUES ('2022-02-11 19:22:11', 'Losartana', 'EMS', '61631636804', '95620594807', 1); --lucas
 	
 INSERT INTO Ministra
-	VALUES ('2022-03-30 21:02:01', 'Tylenol', 'Genérico', '70993275850', '59999198864'); --daniel
+	VALUES ('2022-03-30 21:02:01', 'Tylenol', 'Genérico', '70993275850', '59999198864', 2); --daniel
 	
 INSERT INTO Ministra
-	VALUES ('2022-04-11 16:33:10', 'Scaflan', 'Genérico', '37496351881', '78245495859'); --lais
+	VALUES ('2022-04-11 16:33:10', 'Scaflan', 'Genérico', '37496351881', '78245495859', 3); --lais
 	
 INSERT INTO Ministra
-	VALUES ('2022-04-11 16:58:59', 'Dexametasona', 'EMS', '37496351881', '52775330878'); --lais
+	VALUES ('2022-04-11 16:58:59', 'Dexametasona', 'EMS', '37496351881', '52775330878', 1); --lais
 	
 INSERT INTO Ministra
-	VALUES ('2022-03-19 08:00:31', 'Dorflex', 'Sanofi Aventis', '45380517803', '15347709847'); --toguro
+	VALUES ('2022-03-19 08:00:31', 'Dorflex', 'Sanofi Aventis', '45380517803', '15347709847', 2); --toguro
 	
 INSERT INTO Ministra
-	VALUES ('2022-03-19 11:05:20', 'Dramin', 'Medley', '45380517803', '15347709847'); --toguro
+	VALUES ('2022-03-19 11:05:20', 'Dramin', 'Medley', '45380517803', '15347709847', 3); --toguro
 	
 INSERT INTO Ministra
-	VALUES ('2022-01-01 11:59:55', 'Novalgina', 'Medley', '33335600894', '95620594807'); --serafina
-	
---MINISTRA_DOSAGEM--
-INSERT INTO Ministra_Dosagem
-	VALUES (1, 'Losartana', 'EMS', '61631636804');
-	
-INSERT INTO Ministra_Dosagem
-	VALUES (2, 'Tylenol', 'Genérico', '70993275850');
-	
-INSERT INTO Ministra_Dosagem
-	VALUES (3, 'Scaflan', 'Genérico', '37496351881');
-	
-INSERT INTO Ministra_Dosagem
-	VALUES (1, 'Dexametasona', 'EMS', '37496351881');
-	
-INSERT INTO Ministra_Dosagem
-	VALUES (2, 'Dorflex', 'Sanofi Aventis', '45380517803');
-	
-INSERT INTO Ministra_Dosagem
-	VALUES (3, 'Dramin', 'Medley', '45380517803');
-	
-INSERT INTO Ministra_Dosagem
-	VALUES (4, 'Novalgina', 'Medley', '33335600894');
-	
+	VALUES ('2022-01-01 11:59:55', 'Novalgina', 'Medley', '33335600894', '95620594807', 4); --serafina
 	
 	
