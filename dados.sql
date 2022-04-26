@@ -40,7 +40,7 @@ INSERT INTO Paciente
 	VALUES (33335600894, 'Serafina Melo', '1987-11-10', '2021-12-30', 1734546426);
 	
 INSERT INTO Paciente 
-	VALUES (70993275850, 'Daniel Orivaldo da Silva', '1980-05-23', '2022-04-12', 1929683802);
+	VALUES (70993275850, 'Daniel Orivaldo da Silva', '1980-05-23', '2022-04-01', 1929683802);
 	
 INSERT INTO Paciente 
 	VALUES (61631636804, 'Lucas Anderiscor', '1922-12-25', '2022-02-10', 1834026490);
@@ -49,13 +49,13 @@ INSERT INTO Paciente
 	VALUES (16351920809, 'Guilherme Bartolomeu Silva', '1957-02-11', '2022-04-11', 19991937444);
 	
 INSERT INTO Paciente 
-	VALUES (17926818879, 'Casimiro Miguel', '1989-06-16', '2022-01-13', 18975727414);
+	VALUES (17926818879, 'Casimiro Miguel', '1989-06-16', '2022-03-13', 18975727414);
 	
 INSERT INTO Paciente 
-	VALUES (53469578800, 'Eva Salomão Aquino', '1981-01-17', '2022-01-17', 13973122335);
+	VALUES (53469578800, 'Eva Salomão Aquino', '1981-01-17', '2022-03-17', 13973122335);
 
 INSERT INTO Paciente 
-	VALUES (37496351881, 'Lais Pires Guerreiro', '2010-04-18', '2022-04-17', 12974978512);
+	VALUES (37496351881, 'Lais Pires Guerreiro', '2010-04-18', '2022-04-10', 12974978512);
 	
 --REMEDIOS--
 INSERT INTO Remedios 
@@ -175,16 +175,69 @@ INSERT INTO Paciente_Alergia
 INSERT INTO Paciente_Alergia 
 	VALUES ('Acetaminofeno', '70993275850');
 	
---Atualiza--
+--ATUALIZA--
 INSERT INTO Atualiza
-	VALUES ('2022-03-10', 'Tylenol', 'Genérico', '12795147874');
+	VALUES ('2022-03-10 12:04:02', 'Tylenol', 'Genérico', '12795147874');
 	
 INSERT INTO Atualiza
-	VALUES ('2022-04-01', 'Losartana', 'EMS', '51723859834');
+	VALUES ('2022-04-01 16:33:10', 'Losartana', 'EMS', '51723859834');
 	
 INSERT INTO Atualiza
-	VALUES ('2022-04-14', 'Scaflan', 'Genérico', '63585511830');
+	VALUES ('2022-04-14 06:44:56', 'Scaflan', 'Genérico', '63585511830');
 	
+--ATUALIZA_QUANTIDADE--
+INSERT INTO Atualiza_Quantidade
+	VALUES (12, 'Scaflan', 'Genérico');
+	
+INSERT INTO Atualiza_Quantidade
+	VALUES (9, 'Losartana', 'EMS');
+	
+INSERT INTO Atualiza_Quantidade
+	VALUES (14, 'Tylenol', 'Genérico');
+	
+--MINISTRA--
+INSERT INTO Ministra
+	VALUES ('2022-02-11 19:22:11', 'Losartana', 'EMS', '61631636804', '95620594807'); --lucas
+	
+INSERT INTO Ministra
+	VALUES ('2022-03-30 21:02:01', 'Tylenol', 'Genérico', '70993275850', '59999198864'); --daniel
+	
+INSERT INTO Ministra
+	VALUES ('2022-04-11 16:33:10', 'Scaflan', 'Genérico', '37496351881', '78245495859'); --lais
+	
+INSERT INTO Ministra
+	VALUES ('2022-04-11 16:58:59', 'Dexametasona', 'EMS', '37496351881', '52775330878'); --lais
+	
+INSERT INTO Ministra
+	VALUES ('2022-03-19 08:00:31', 'Dorflex', 'Sanofi Aventis', '45380517803', '15347709847'); --toguro
+	
+INSERT INTO Ministra
+	VALUES ('2022-03-19 11:05:20', 'Dramin', 'Medley', '45380517803', '15347709847'); --toguro
+	
+INSERT INTO Ministra
+	VALUES ('2022-01-01 11:59:55', 'Novalgina', 'Medley', '33335600894', '95620594807'); --serafina
+	
+--MINISTRA_DOSAGEM--
+INSERT INTO Ministra_Dosagem
+	VALUES (1, 'Losartana', 'EMS', '61631636804');
+	
+INSERT INTO Ministra_Dosagem
+	VALUES (2, 'Tylenol', 'Genérico', '70993275850');
+	
+INSERT INTO Ministra_Dosagem
+	VALUES (3, 'Scaflan', 'Genérico', '37496351881');
+	
+INSERT INTO Ministra_Dosagem
+	VALUES (1, 'Dexametasona', 'EMS', '37496351881');
+	
+INSERT INTO Ministra_Dosagem
+	VALUES (2, 'Dorflex', 'Sanofi Aventis', '45380517803');
+	
+INSERT INTO Ministra_Dosagem
+	VALUES (3, 'Dramin', 'Medley', '45380517803');
+	
+INSERT INTO Ministra_Dosagem
+	VALUES (4, 'Novalgina', 'Medley', '33335600894');
 	
 	
 	
