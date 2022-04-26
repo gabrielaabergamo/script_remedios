@@ -128,14 +128,14 @@ CREATE TABLE Ministra_Dosagem(
 	CONSTRAINT ministrar_dose primary key (nome_remedio, laboratorio_remedio, CPF_paciente) 
 );
 
-DROP TABLE Medico CASCADE;
-DROP TABLE Enfermeiro CASCADE;
-DROP TABLE Remedios CASCADE;
-DROP TABLE Remedios_Composicao CASCADE;
-DROP TABLE Paciente CASCADE;
-DROP TABLE Paciente_Caso CASCADE;
-DROP TABLE Paciente_Alergia CASCADE;
-DROP TABLE Atualiza CASCADE;
-DROP TABLE Atualiza_Quantidade CASCADE;
-DROP TABLE Ministra CASCADE;
-DROP TABLE Ministra_Dosagem CASCADE;
+--DROP TABLE Medico CASCADE;
+--DROP TABLE Enfermeiro CASCADE;
+--DROP TABLE Remedios CASCADE;
+--DROP TABLE Remedios_Composicao CASCADE;
+--DROP TABLE Paciente CASCADE;
+--DROP TABLE Paciente_Caso CASCADE;
+--DROP TABLE Paciente_Alergia CASCADE;
+--DROP TABLE Atualiza CASCADE;
+--DROP TABLE Atualiza_Quantidade CASCADE;
+--DROP TABLE Ministra CASCADE;
+--DROP TABLE Ministra_Dosagem CASCADE;
