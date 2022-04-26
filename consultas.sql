@@ -56,12 +56,12 @@ SELECT laboratorio, count(Nome)
 			GROUP BY CPF_Paciente
 			HAVING count(Alergia) >= 3
 )t1
-			INNER JOIN (
+			JOIN (
 	SELECT Nome, CPF 
 	FROM Paciente
 )t2
 ON t1.cpf_paciente = t2.cpf
-			INNER JOIN (
+			JOIN (
 				SELECT CPF_Paciente, alergia 
 			 	FROM Paciente_Alergia
 )t3
