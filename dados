@@ -157,25 +157,24 @@ INSERT INTO Paciente_Caso
 	VALUES ('Reação Alérgica', '37496351881');
 	
 --PACIENTE_ALERGIA--
-INSERT INTO Paciente_Caso 
+INSERT INTO Paciente_Alergia 
 	VALUES ('Orfenadrina', '37496351881');
 	
-INSERT INTO Paciente_Caso 
+INSERT INTO Paciente_Alergia 
 	VALUES ('Povidona', '37496351881');
 	
-INSERT INTO Paciente_Caso 
+INSERT INTO Paciente_Alergia 
 	VALUES ('Paracetamol', '37496351881');
 	
-INSERT INTO Paciente_Caso 
+INSERT INTO Paciente_Alergia 
 	VALUES ('Corticosteroide', '17926818879');
 	
-INSERT INTO Paciente_Caso 
+INSERT INTO Paciente_Alergia  
 	VALUES ('Dipirona', '45380517803');
 	
-INSERT INTO Paciente_Caso 
+INSERT INTO Paciente_Alergia 
 	VALUES ('Acetaminofeno', '70993275850');
 	
-
 	
 	
 	
