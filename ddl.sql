@@ -12,6 +12,7 @@ CREATE DATABASE controle_remedios
     CONNECTION LIMIT = -1;
 	
 -- CRIAÇÃO DOS DOMINOS
+
 CREATE DOMAIN PHONE as 
 	VARCHAR(11) CHECK 
 		(VALUE ~ '^\d{10}$' OR VALUE ~ '^\d{11}$');
@@ -70,14 +71,16 @@ CREATE TABLE Paciente (
 CREATE TABLE Paciente_Caso(
 	caso VARCHAR(255) NOT NULL,
 	CPF_paciente VARCPF NOT NULL,
-	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF),
+	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF)
+		ON DELETE CASCADE,
 	CONSTRAINT caso_isolado primary key(caso, CPF_paciente)
 );
 
 CREATE TABLE Paciente_Alergia(
 	alergia VARCHAR(255) NOT NULL,
 	CPF_paciente VARCPF NOT NULL,
-	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF),
+	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF)
+		ON DELETE CASCADE,
 	CONSTRAINT alergia_isolado primary key(alergia, CPF_paciente)
 );
 
@@ -87,7 +90,8 @@ CREATE TABLE Atualiza (
 	laboratorio_remedio VARCHAR(255) NOT NULL,
 	CPF_enfermeiro VARCPF NOT NULL,
 	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
-	FOREIGN KEY (CPF_enfermeiro) REFERENCES Enfermeiro(CPF),
+	FOREIGN KEY (CPF_enfermeiro) REFERENCES Enfermeiro(CPF)
+		ON DELETE SET NULL,
 	CONSTRAINT atualizacao primary key (data_hora, nome_remedio, laboratorio_remedio, CPF_enfermeiro) 
 );
 
@@ -106,8 +110,10 @@ CREATE TABLE Ministra(
 	CPF_paciente  VARCPF NOT NULL,
 	CPF_medico VARCPF NOT NULL,
 	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
-	FOREIGN KEY (CPF_medico) REFERENCES Medico(CPF),
-	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF),
+	FOREIGN KEY (CPF_medico) REFERENCES Medico(CPF)
+		ON DELETE SET NULL,
+	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF)
+		ON DELETE SET NULL,
 	CONSTRAINT ministrar primary key (data_hora, nome_remedio, laboratorio_remedio, CPF_paciente, CPF_medico) 
 );
 
@@ -117,7 +123,8 @@ CREATE TABLE Ministra_Dosagem(
 	laboratorio_remedio VARCHAR(255) NOT NULL,
 	CPF_paciente VARCPF NOT NULL,
 	FOREIGN KEY (nome_remedio, laboratorio_remedio) REFERENCES Remedios(nome, laboratorio),
-	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF),
+	FOREIGN KEY (CPF_paciente) REFERENCES Paciente(CPF)
+		ON DELETE SET NULL,
 	CONSTRAINT ministrar_dose primary key (nome_remedio, laboratorio_remedio, CPF_paciente) 
 );
 
