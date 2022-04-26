@@ -18,19 +18,19 @@ INSERT INTO Medico
 	
 --ENFERMEIROS--
 INSERT INTO Enfermeiro 
-	VALUES (12795147874, 'Carlos Prestes', '1982-10-10', );
+	VALUES (12795147874, 'Carlos Prestes', '1982-10-10', 10111);
 	
 INSERT INTO Enfermeiro 
-	VALUES (13767793822, 'Emanuel Vitto', '1990-02-01', );
+	VALUES (13767793822, 'Emanuel Vitto', '1990-02-01', 9982);
 	
 INSERT INTO Enfermeiro 
-	VALUES (63585511830, 'Ana Clara Machado', '1999-09-06', );
+	VALUES (63585511830, 'Ana Clara Machado', '1999-09-06', 777666);
 	
 INSERT INTO Enfermeiro 
-	VALUES (31053060807, 'Bruna Rodrigues Oliveira', '1987-03-11', );
+	VALUES (31053060807, 'Bruna Rodrigues Oliveira', '1987-03-11', 8919);
 	
 INSERT INTO Enfermeiro 
-	VALUES (51723859834, 'Magnus Antedeguemon', '1980-07-21', );
+	VALUES (51723859834, 'Magnus Antedeguemon', '1980-07-21', 29012);
 	
 --PACIENTES--
 INSERT INTO Paciente 
@@ -175,6 +175,15 @@ INSERT INTO Paciente_Alergia
 INSERT INTO Paciente_Alergia 
 	VALUES ('Acetaminofeno', '70993275850');
 	
+--Atualiza--
+INSERT INTO Atualiza
+	VALUES ('2022-03-10', 'Tylenol', 'Genérico', '12795147874');
+	
+INSERT INTO Atualiza
+	VALUES ('2022-04-01', 'Losartana', 'EMS', '51723859834');
+	
+INSERT INTO Atualiza
+	VALUES ('2022-04-14', 'Scaflan', 'Genérico', '63585511830');
 	
 	
 	
