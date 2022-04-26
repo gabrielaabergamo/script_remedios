@@ -172,6 +172,9 @@ INSERT INTO Paciente_Alergia
 INSERT INTO Paciente_Alergia  
 	VALUES ('Dipirona', '45380517803');
 	
+INSERT INTO Paciente_Alergia  
+	VALUES ('Acetaminofeno', '45380517803');
+	
 INSERT INTO Paciente_Alergia 
 	VALUES ('Acetaminofeno', '70993275850');
 	
